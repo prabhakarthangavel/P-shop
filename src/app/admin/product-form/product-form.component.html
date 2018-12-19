@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-6">
+      <form #f="ngForm" (ngSubmit)="save(f.value)">
+          <div class="form-group">
+            <label for="title">Title</label>
+              <input required #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control">
+              <div class="alert alert-danger" *ngIf="title.touched && title.invalid">Tittle required</div>
+          </div>
+          <div class="form-group">
+            <label for="price">Price</label> 
+            <div class="input-group-prepend">
+                <span class="input-group-text">₹</span>
+                <input required #price="ngModel" [(ngModel)]="product.price" name="price" [min]="0" id="price" type="number" class="form-control">
+              </div>
+              <div class="alert alert-danger" *ngIf="price.touched  && price.invalid">
+                <div *ngIf="price.errors.required">Price required</div>
+                <div *ngIf="price.errors.min">Price must be minimum 0</div>
+              </div> 
+          </div>
+          <div class="form-group">
+            <label for="category">Category</label>
+              <select required #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control">
+                <option value="select">--select--</option>
+                <!-- getting values from DB, $key is the key value in firebase categories -->
+                <option *ngFor="let c of categories$ | async" value={{c.name}}>
+                  {{c.name}}
+                </option>
+              </select>
+              <div class="alert alert-danger" *ngIf="category.touched && category.invalid">Category required</div>
+          </div>
+          <div class="form-group">
+              <label for="imageurl">Image URL</label>
+                <input required #imageurl="ngModel" [(ngModel)]="product.imageurl" name="imageurl" url id="imageurl" type="text" class="form-control">
+                <div class="alert alert-danger" *ngIf="imageurl.touched && imageurl.invalid">
+                  <div *ngIf="imageurl.errors.required">ImageUrl required</div>
+                  <div *ngIf="imageurl.errors.url">Enter valid URL</div>
+                </div>
+          </div>
+          <button class="btn btn-primary btn-sm" [disabled]="!f.valid">Save</button>
+          <!-- change the default type of button from 'submit' to 'button' -->
+          <button type="button" class="btn btn-danger btn-sm" (click)="delete()">Delete</button>
+        </form>
+  </div>
+  <div class="col-md-6">
+      <div class="card" style="width: 18rem;">
+          <img class="card-img-top" [src]="imageurl.value">
+          <div class="card-body">
+            <h4 class="card-title">{{product.title}}</h4>
+            <p class="card-text">{{product.price | currency:'INR':true}}</p>
+          </div>
+        </div>
+  </div>
+</div>
+
+ 
