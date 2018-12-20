@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductSaveService } from 'src/app/product-save.service';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/switchMap'; 

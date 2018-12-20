@@ -1,3 +1,5 @@
+<!-- this is the product form page for New product with validation  -->
+
 <div class="row">
   <div class="col-md-6">
       <form #f="ngForm" (ngSubmit)="save(f.value)">
@@ -42,14 +44,9 @@
         </form>
   </div>
   <div class="col-md-6">
-      <div class="card" style="width: 18rem;">
-          <img class="card-img-top" [src]="imageurl.value">
-          <div class="card-body">
-            <h4 class="card-title">{{product.title}}</h4>
-            <p class="card-text">{{product.price | currency:'INR':true}}</p>
-          </div>
-        </div>
+      <app-product-card [product]="product" [show-actions]="false"></app-product-card>
   </div>
 </div>
+
 
  
