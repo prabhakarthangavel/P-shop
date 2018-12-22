@@ -27,6 +27,7 @@ import { UserService } from './user.service';
 import { CategoryService } from './category.service';
 import { ProductSaveService } from './product-save.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
+import { ShoppingCartService } from './shopping-cart.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { ProductFilterComponent } from './product/product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
@@ -81,7 +82,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
     AdminAuthGuardService,
     UserService,
     CategoryService,
-    ProductSaveService
+    ProductSaveService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })
