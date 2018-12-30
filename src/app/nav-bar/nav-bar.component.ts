@@ -11,9 +11,10 @@ import { shoppingCart } from '../shopping-cart';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  cart$:Observable<shoppingCart>
+  // this is observable of shoppingCart you can give like cart$: Observable<ShoppingCart>
+  cart$;
 
-  constructor(private auth:AuthService,
+  constructor(public auth:AuthService,
               private cartService:ShoppingCartService) { }
 
   async ngOnInit(){

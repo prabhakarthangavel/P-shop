@@ -21,6 +21,7 @@
        <a class="nav-link" *ngIf="auth.user$ | async as user" routerLink="/shopping-cart">Shopping Cart
           <span class="badge badge-warning badge-pill" *ngIf="cart$ | async as cart">
               {{cart.totalItemsCount}}
+              <!-- this totalItemsCount call ngOninit and get() from there it returns items to shopping-cart class -->
           </span></a>
      </li> 
      <div class="dropdown" *ngIf="auth.user$ | async as user; else annonymousUser">
