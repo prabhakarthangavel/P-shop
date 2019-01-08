@@ -1,4 +1,5 @@
 import { shoppingCartItemInterface } from './shopping-cart-item';
+import { productInterface } from './product'
 
 export class shoppingCart{
     items:shoppingCartItemInterface[] = [];
@@ -24,4 +25,8 @@ export class shoppingCart{
          count += this.itemsMap[productId].quantity;
         return count;   
     }
+    getQuantity(product:productInterface){
+        let item = this.itemsMap[product.key];
+        return item ? item.quantity : 0;
+      }
 }
