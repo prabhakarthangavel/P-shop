@@ -5,7 +5,7 @@ import { __await } from 'tslib';
 import { take } from 'rxjs/operators';
 import { productInterface } from './product';
 import { shoppingCart } from './shopping-cart';
-import { Observable } from 'rxjs';
+import { Observable, observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 
 
@@ -103,7 +103,9 @@ export class ShoppingCartService {
   private async updateItemQuantity(product: productInterface,change:number) {
     // await till it create the cartid using async
     const cartId = await this.getOrCreateCartId();
+    // product interface will go into items and create in firebase
     const item = this.db.object('/shopping-cart/' + cartId + '/items/' + product.key);
+    // item$ observable will till item creates an item in firebase
     const item$ = item.snapshotChanges();
     item$.pipe(take(1)).subscribe((data: any) => {
       // if (data.payload.val()) {
